@@ -1,0 +1,398 @@
+[
+  {
+    "name": "Iron",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 25,
+    "failChance": 0.1,
+    "ores": [
+      "oreIron",
+      "oreNickel",
+      "oreTin",
+      "denseoreIron"
+    ],
+    "chances": [
+      0.5,
+      0.25,
+      0.2,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Magnetite",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 25,
+    "failChance": 0.1,
+    "ores": [
+      "oreIron",
+      "oreGold"
+    ],
+    "chances": [
+      0.85,
+      0.15
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Pyrite",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 20,
+    "failChance": 0.1,
+    "ores": [
+      "oreIron",
+      "oreSulfur"
+    ],
+    "chances": [
+      0.5,
+      0.5
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Bauxite",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 20,
+    "failChance": 0.2,
+    "ores": [
+      "oreAluminum",
+      "oreTitanium",
+      "denseoreAluminum"
+    ],
+    "chances": [
+      0.9,
+      0.05,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Copper",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 30,
+    "failChance": 0.2,
+    "ores": [
+      "oreCopper",
+      "oreGold",
+      "oreNickel",
+      "denseoreCopper"
+    ],
+    "chances": [
+      0.65,
+      0.25,
+      0.05,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Cassiterite",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 15,
+    "failChance": 0.2,
+    "ores": [
+      "oreTin",
+      "denseoreTin"
+    ],
+    "chances": [
+      0.95,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Gold",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 20,
+    "failChance": 0.3,
+    "ores": [
+      "oreGold",
+      "oreCopper",
+      "oreNickel",
+      "denseoreGold"
+    ],
+    "chances": [
+      0.65,
+      0.25,
+      0.05,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Nickel",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 20,
+    "failChance": 0.3,
+    "ores": [
+      "oreNickel",
+      "orePlatinum",
+      "oreIron",
+      "denseoreNickel"
+    ],
+    "chances": [
+      0.85,
+      0.05,
+      0.05,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Platinum",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 5,
+    "failChance": 0.35,
+    "ores": [
+      "orePlatinum",
+      "oreNickel",
+      "",
+      "oreIridium",
+      "denseorePlatinum"
+    ],
+    "chances": [
+      0.4,
+      0.3,
+      0.15,
+      0.1,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Uranium",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 10,
+    "failChance": 0.35,
+    "ores": [
+      "oreUranium",
+      "oreLead",
+      "orePlutonium",
+      "denseoreUranium"
+    ],
+    "chances": [
+      0.55,
+      0.3,
+      0.1,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Quartzite",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 5,
+    "failChance": 0.3,
+    "ores": [
+      "oreQuartz",
+      "oreCertusQuartz"
+    ],
+    "chances": [
+      0.6,
+      0.4
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Galena",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 15,
+    "failChance": 0.2,
+    "ores": [
+      "oreLead",
+      "oreSilver",
+      "oreSulfur",
+      "denseoreLead",
+      "denseoreSilver"
+    ],
+    "chances": [
+      0.4,
+      0.4,
+      0.1,
+      0.05,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Lead",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 10,
+    "failChance": 0.15,
+    "ores": [
+      "oreLead",
+      "oreSilver",
+      "denseoreLead"
+    ],
+    "chances": [
+      0.55,
+      0.4,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Silver",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 10,
+    "failChance": 0.2,
+    "ores": [
+      "oreSilver",
+      "oreLead",
+      "denseoreSilver"
+    ],
+    "chances": [
+      0.55,
+      0.4,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Lapis",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 10,
+    "failChance": 0.2,
+    "ores": [
+      "oreLapis",
+      "oreIron",
+      "oreSulfur",
+      "denseoreLapis"
+    ],
+    "chances": [
+      0.65,
+      0.275,
+      0.025,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Cinnabar",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 15,
+    "failChance": 0.1,
+    "ores": [
+      "oreRedstone",
+      "denseoreRedstone",
+      "oreRuby",
+      "oreCinnabar",
+      "oreSulfur"
+    ],
+    "chances": [
+      0.75,
+      0.05,
+      0.05,
+      0.1,
+      0.05
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Coal",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 25,
+    "failChance": 0.1,
+    "ores": [
+      "oreCoal",
+      "denseoreCoal",
+      "oreDiamond",
+      "oreEmerald"
+    ],
+    "chances": [
+      0.92,
+      0.1,
+      0.015,
+      0.015
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  },
+  {
+    "name": "Silt",
+    "genType": "fixed",
+    "minCapacity": 0,
+    "maxCapacity": 38400,
+    "mineralWeight": 25,
+    "failChance": 0.05,
+    "ores": [
+      "blockClay",
+      "sand",
+      "gravel"
+    ],
+    "chances": [
+      0.5,
+      0.3,
+      0.2
+    ],
+    "blacklistedDimensions": [
+      1
+    ]
+  }
+]
