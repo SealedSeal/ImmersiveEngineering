@@ -8,15 +8,15 @@
     "failChance": 0.1,
     "ores": [
       "glowstone",
-	  "dustGlowstone"
+	    "dustGlowstone"
     ],
     "chances": [
       0.1,
-	  0.9
+	    0.9
     ],
     "blacklistedDimensions": [
       0,
-	  1
+	    1
     ]
   },
   {
@@ -27,20 +27,20 @@
     "mineralWeight": 20,
     "failChance": 0.1,
     "ores": [
-	  "netherrack",
+	    "netherrack",
       "minecraft:rotten_flesh",
-	  "bone",
-	  "leather"
+	    "bone",
+	    "leather"
     ],
     "chances": [
-	  0.2,
+	    0.2,
       0.6,
-	  0.1,
-	  0.1
+	    0.1,
+	    0.1
     ],
     "blacklistedDimensions": [
       0,
-	  1
+	    1
     ]
   },
   {
@@ -51,20 +51,20 @@
     "mineralWeight": 20,
     "failChance": 0.1,
     "ores": [
-	  "minecraft:soul_sand",
+	    "minecraft:soul_sand",
       "minecraft:bone_block",
-	  "bone",
-	  "minecraft:dye/15"
+	    "bone",
+	    "minecraft:dye/15"
     ],
     "chances": [
       0.1,
-	  0.4,
-	  0.25,
-	  0.25
+	    0.4,
+	    0.25,
+	    0.25
     ],
     "blacklistedDimensions": [
       0,
-	  1
+	    1
     ]
   },
   {
@@ -75,20 +75,20 @@
     "mineralWeight": 15,
     "failChance": 0.1,
     "ores": [
-	  "minecraft:magma",
+	    "minecraft:magma",
       "netherrack",
-	  "minecraft:magma_cream",
-	  "minecraft:blaze_powder"
+	    "minecraft:magma_cream",
+	    "minecraft:blaze_powder"
     ],
     "chances": [
       0.5,
-	  0.25,
-	  0.125,
-	  0.125
+	    0.25,
+	    0.125,
+	    0.125
     ],
     "blacklistedDimensions": [
       0,
-	  1
+	    1
     ]
   },
   {
@@ -106,7 +106,7 @@
     ],
     "blacklistedDimensions": [
       0,
-	  1
+	    1
     ]
   },
   {
@@ -118,21 +118,21 @@
     "failChance": 0.1,
     "ores": [
       "minecraft:nether_brick",
-	  "minecraft:nether_brick_stairs",
-	  "minecraft:stone_slab/6",
-	  "minecraft:nether_brick_fence",
-	  "minecraft:netherbrick"
+	    "minecraft:nether_brick_stairs",
+	    "minecraft:stone_slab/6",
+	    "minecraft:nether_brick_fence",
+	    "minecraft:netherbrick"
     ],
     "chances": [
       0.35,
-	  0.05,
-	  0.05,
-	  0.05,
-	  0.5
+	    0.05,
+	    0.05,
+	    0.05,
+	    0.5
     ],
     "blacklistedDimensions": [
       0,
-	  1
+	    1
     ]
   }
 ]
