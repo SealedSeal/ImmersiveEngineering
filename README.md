@@ -1,12 +1,12 @@
 ![Logo](https://raw.githubusercontent.com/BluSunrize/ImmersiveEngineering/master/src/main/resources/assets/immersiveengineering/logo.png)
-==============
+--------------------------------------------------
 
 A retro-futuristic tech mod!
 Wires, transformers, capacitors!
-==============
+--------------------------------------------------
 
 4ClevDev edit of original mod with some changes, especially reworking excavators.
-==============
+--------------------------------------------------
 
 Changes:
 
@@ -36,6 +36,6 @@ Changes:
     
   * Crusher:<br/>
     + Added config parameter crusher_legitSideInput that disables side input to crusher, leaving only top side of central top blocks for input
-==============
+--------------------------------------------------
 
   Mineral Config Files
