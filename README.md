@@ -63,7 +63,7 @@ Changes:
   * chances - % of each resource from the ores list in a mineral, sums to 1 (float[])
   * blacklistedDimensions - List of dimensions where the mineral cannot be generated (int[])
 
-    More examples of minerals with type "range"
-    https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/master/mineralsExample/vanilla_nether.json
+More examples of minerals with type "range"
+https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/master/mineralsExample/vanilla_nether.json
 
   
