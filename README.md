@@ -50,12 +50,17 @@ Changes:
       + "infinite" - Unlimited yield
       + "fixed" - Fixed yield based on maxCapacity
       + "range" - Random yield between minCapacity and maxCapacity
-  * minCapacity -
-  * maxCapacity -
-  * mineralWeight -
-  * failChance -
-  * ores -
-  * chances - 
-  * blacklistedDimensions - 
+  * minCapacity - Minimal capacity that can be generated if "range" type is selected (int)
+  * maxCapacity - Maximal capacity that can be generated if "range" type is selected, also used as a value for "fixed" type (int)
+  * mineralWeight - Weight of a mineral for its selection by a generator among other minerals (int)
+  * failChance - Still have no idea what it is used for, probably somehow relates to excavator fail chance (float)
+  * ores - List of resources that can be excavated (String[])
+    * Can be blocks or items
+    * Supports ore dictionary names, id names, and id names with metadata, examples:
+      * "ironOre"
+      * "mineraft:iron_ore"
+      * "minecraft:stone/1"
+  * chances - % of each resource from the ores list in a mineral, sums to 1 (float[])
+  * blacklistedDimensions - List of dimensions where the mineral cannot be generated (int[])
 
   
