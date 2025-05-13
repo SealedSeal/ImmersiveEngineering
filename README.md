@@ -5,6 +5,10 @@ A retro-futuristic tech mod!
 Wires, transformers, capacitors!
 ==============
 
+4ClevDev edit of original mod with some changes, especially reworking excavators.
+==============
+
+Changes:
 
 
 # Downloads
