@@ -8,6 +8,7 @@
 
 package blusunrize.immersiveengineering.common.blocks.metal;
 
+import blusunrize.immersiveengineering.common.Config.IEConfig;
 import blusunrize.immersiveengineering.ImmersiveEngineering;
 import blusunrize.immersiveengineering.api.crafting.CrusherRecipe;
 import blusunrize.immersiveengineering.common.EventHandler;
@@ -490,8 +491,13 @@ public class TileEntityCrusher extends TileEntityMultiblockMetal<TileEntityCrush
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if(pos > 30&&pos < 44&&pos%5 > 0&&pos%5 < 4&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return master()!=null;
+		if(pos > 30&&pos < 44&&pos%5 > 0&&pos%5 < 4&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (!IEConfig.Machines.crusher_legitSideInput) {
+				return master()!=null;
+			} else if (IEConfig.Machines.crusher_legitSideInput && facing.equals(EnumFacing.UP)) {
+				return master()!=null;
+			}
+		}
 		return super.hasCapability(capability, facing);
 	}
 
@@ -503,9 +509,15 @@ public class TileEntityCrusher extends TileEntityMultiblockMetal<TileEntityCrush
 		if(pos > 30&&pos < 44&&pos%5 > 0&&pos%5 < 4&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 		{
 			TileEntityCrusher master = master();
-			if(master!=null)
-				return (T)master.insertionHandler;
-			return null;
+			if (!IEConfig.Machines.crusher_legitSideInput) {
+				if(master!=null)
+					return (T)master.insertionHandler;
+				return null;
+			} else if (IEConfig.Machines.crusher_legitSideInput && facing.equals(EnumFacing.UP)) {
+				if(master!=null)
+					return (T)master.insertionHandler;
+				return null;
+			}
 		}
 		return super.getCapability(capability, facing);
 	}

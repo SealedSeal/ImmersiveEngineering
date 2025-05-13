@@ -57,7 +57,9 @@ public class Excavator
 		@Override
 		public void apply()
 		{
-			this.mineral = ExcavatorHandler.addMineral(name, mineralWeight, failChance, ores, chances);
+			//4CD_TODO
+			//Do something with this
+			this.mineral = ExcavatorHandler.addMineral(name, "fixed", 0, 0, mineralWeight, failChance, ores, chances, new int[]{-1,0,1});
 			if(dimensions!=null)
 				if(blacklist)
 					this.mineral.dimensionBlacklist = dimensions;

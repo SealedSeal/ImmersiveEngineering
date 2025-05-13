@@ -39,15 +39,13 @@ public class ExcavatorHandler
 	public static LinkedHashMap<MineralMix, Integer> mineralList = new LinkedHashMap<MineralMix, Integer>();
 	public static HashMap<DimensionChunkCoords, MineralWorldInfo> mineralCache = new HashMap<DimensionChunkCoords, MineralWorldInfo>();
 	private static HashMap<Integer, Set<MineralMix>> dimensionPermittedMinerals = new HashMap<Integer, Set<MineralMix>>();
-	public static int mineralVeinCapacity = 0;
 	public static double mineralChance = 0;
-	public static int[] defaultDimensionBlacklist = new int[0];
 	public static boolean allowPackets = false;
 
-	public static MineralMix addMineral(String name, int mineralWeight, float failChance, String[] ores, float[] chances)
+	public static MineralMix addMineral(String name, String genType, int minCapacity, int maxCapacity, int mineralWeight, float failChance, String[] ores, float[] chances, int[] blacklistedDimensions)
 	{
 		assert ores.length==chances.length;
-		MineralMix mix = new MineralMix(name, failChance, ores, chances);
+		MineralMix mix = new MineralMix(name, genType, minCapacity, maxCapacity, failChance, ores, chances, blacklistedDimensions);
 		mineralList.put(mix, mineralWeight);
 		return mix;
 	}
@@ -75,7 +73,7 @@ public class ExcavatorHandler
 		if(info==null||(info.mineral==null&&info.mineralOverride==null))
 			return null;
 
-		if(mineralVeinCapacity >= 0&&info.depletion > mineralVeinCapacity)
+		if(info.veinCapacity >= 0&&info.depletion > info.veinCapacity)
 			return null;
 
 		return info.mineralOverride!=null?info.mineralOverride: info.mineral;
@@ -115,8 +113,22 @@ public class ExcavatorHandler
 					}
 				}
 			}
+			
+			//Stores mineral data into chunk here
 			worldInfo = new MineralWorldInfo();
 			worldInfo.mineral = mix;
+			
+			//Sets vein capacity based on mineral genType
+			if (mix != null) {
+				if (worldInfo.mineral.genType.toLowerCase().equals("infinite")) {
+					worldInfo.veinCapacity = -1;
+				} else if (worldInfo.mineral.genType.toLowerCase().equals("fixed")) {
+					worldInfo.veinCapacity = worldInfo.mineral.maxCapacity;
+				} else if (worldInfo.mineral.genType.toLowerCase().equals("range")) {
+					worldInfo.veinCapacity = worldInfo.mineral.minCapacity + (int)((worldInfo.mineral.maxCapacity - worldInfo.mineral.minCapacity) * dd);
+				}
+			}
+			
 			mineralCache.put(chunkCoords, worldInfo);
 		}
 		return worldInfo;
@@ -132,6 +144,9 @@ public class ExcavatorHandler
 	public static class MineralMix
 	{
 		public String name;
+		public String genType;
+		public int minCapacity;
+		public int maxCapacity;
 		public float failChance;
 		public String[] ores;
 		public float[] chances;
@@ -145,13 +160,18 @@ public class ExcavatorHandler
 		public int[] dimensionWhitelist = new int[0];
 		public int[] dimensionBlacklist = new int[0];
 
-		public MineralMix(String name, float failChance, String[] ores, float[] chances)
+		public MineralMix(String name, String genType, int minCapacity, int maxCapacity, float failChance, String[] ores, float[] chances, int[] blacklistedDimensions)
 		{
 			this.name = name;
+			this.genType = genType;
+			this.minCapacity = minCapacity;
+			this.maxCapacity = maxCapacity;
 			this.failChance = failChance;
 			this.ores = ores;
 			this.chances = chances;
-			this.dimensionBlacklist = defaultDimensionBlacklist.clone();
+
+			//Assigns list of blacklisted dimensions
+			this.dimensionBlacklist = blacklistedDimensions.clone();
 		}
 
 		public MineralMix addReplacement(String original, String replacement)
@@ -162,6 +182,8 @@ public class ExcavatorHandler
 			return this;
 		}
 
+		//4CD_TODO
+		//Ore block selection is done here
 		public void recalculateChances()
 		{
 			double chanceSum = 0;
@@ -170,9 +192,9 @@ public class ExcavatorHandler
 			for(int i = 0; i < ores.length; i++)
 			{
 				String ore = ores[i];
-				if(replacementOres!=null&&!ApiUtils.isExistingOreName(ore)&&replacementOres.containsKey(ore))
+				if(replacementOres!=null&&/*!ApiUtils.isExistingOreName(ore)&&*/replacementOres.containsKey(ore))
 					ore = replacementOres.get(ore);
-				if(ore!=null&&!ore.isEmpty()&&ApiUtils.isExistingOreName(ore))
+				if(ore!=null&&!ore.isEmpty()/*&&ApiUtils.isExistingOreName(ore)*/)
 				{
 					ItemStack preferredOre = IEApi.getPreferredOreStack(ore);
 					if(!preferredOre.isEmpty())
@@ -230,6 +252,9 @@ public class ExcavatorHandler
 		{
 			NBTTagCompound tag = new NBTTagCompound();
 			tag.setString("name", this.name);
+			tag.setString("genType", this.genType);
+			tag.setInteger("minCapacity", this.minCapacity);
+			tag.setInteger("maxCapacity", this.maxCapacity);
 			tag.setFloat("failChance", this.failChance);
 			NBTTagList tagList = new NBTTagList();
 			for(String ore : this.ores)
@@ -260,6 +285,9 @@ public class ExcavatorHandler
 		public static MineralMix readFromNBT(NBTTagCompound tag)
 		{
 			String name = tag.getString("name");
+			String genType = tag.getString("genType");
+			int minCapacity = tag.getInteger("minCapacity");
+			int maxCapacity = tag.getInteger("maxCapacity");
 			float failChance = tag.getFloat("failChance");
 
 			NBTTagList tagList = tag.getTagList("ores", 8);
@@ -283,12 +311,12 @@ public class ExcavatorHandler
 				recalculatedChances[i] = tagList.getFloatAt(i);
 
 			boolean isValid = tag.getBoolean("isValid");
-			MineralMix mix = new MineralMix(name, failChance, ores, chances);
+			MineralMix mix = new MineralMix(name, genType, minCapacity, maxCapacity, failChance, ores, chances, tag.getIntArray("dimensionBlacklist"));
 			mix.oreOutput = oreOutput;
 			mix.recalculatedChances = recalculatedChances;
 			mix.isValid = isValid;
 			mix.dimensionWhitelist = tag.getIntArray("dimensionWhitelist");
-			mix.dimensionBlacklist = tag.getIntArray("dimensionBlacklist");
+			//mix.dimensionBlacklist = tag.getIntArray("dimensionBlacklist");
 			return mix;
 		}
 	}
@@ -298,6 +326,7 @@ public class ExcavatorHandler
 		public MineralMix mineral;
 		public MineralMix mineralOverride;
 		public int depletion;
+		public int veinCapacity;
 
 		public NBTTagCompound writeToNBT()
 		{
@@ -307,6 +336,7 @@ public class ExcavatorHandler
 			if(mineralOverride!=null)
 				tag.setString("mineralOverride", mineralOverride.name);
 			tag.setInteger("depletion", depletion);
+			tag.setInteger("veinCapacity", veinCapacity);
 			return tag;
 		}
 
@@ -328,6 +358,7 @@ public class ExcavatorHandler
 						info.mineralOverride = mineral;
 			}
 			info.depletion = tag.getInteger("depletion");
+			info.veinCapacity = tag.getInteger("veinCapacity");
 			return info;
 		}
 	}

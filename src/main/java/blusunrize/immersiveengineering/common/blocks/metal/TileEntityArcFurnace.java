@@ -8,6 +8,7 @@
 
 package blusunrize.immersiveengineering.common.blocks.metal;
 
+import blusunrize.immersiveengineering.common.Config.IEConfig;
 import blusunrize.immersiveengineering.ImmersiveEngineering;
 import blusunrize.immersiveengineering.api.Lib;
 import blusunrize.immersiveengineering.api.crafting.ArcFurnaceRecipe;
@@ -619,11 +620,46 @@ public class TileEntityArcFurnace extends TileEntityMultiblockMetal<TileEntityAr
 	IItemHandler outputHandler = new IEInventoryHandler(6, this, 16, false, true);
 	IItemHandler slagHandler = new IEInventoryHandler(1, this, 22, false, true);
 
+	//Electrode slots
+	IItemHandler electrodeHandler = new IEInventoryHandler(3, this, 23, true, false);
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
 	{
-		if((pos==2||pos==22||pos==86||pos==88)&&capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-			return master()!=null;
+		if(capability==CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+		{
+			if(pos==2) {
+				if (!IEConfig.Machines.arcfurnace_legitSideOutput) {
+					return master()!=null;
+				} else if (IEConfig.Machines.arcfurnace_legitSideOutput && facing.equals(EnumFacing.UP)) {
+					return master()!=null;
+				}
+			} else if(pos==22) {
+				if (!IEConfig.Machines.arcfurnace_legitSideSlag) {
+					return master()!=null;
+				} else if (IEConfig.Machines.arcfurnace_legitSideSlag && !facing.equals(EnumFacing.UP) && !facing.equals(EnumFacing.DOWN)) {
+					return master()!=null;
+				}
+			} else if(pos==(mirrored?88: 86)) {
+				if (!IEConfig.Machines.arcfurnace_legitSideInput) {
+					return master()!=null;
+				} else if (IEConfig.Machines.arcfurnace_legitSideInput && facing.equals(EnumFacing.UP)) {
+					return master()!=null;
+				}
+			} else if(pos==(mirrored?86: 88)) {
+				if (!IEConfig.Machines.arcfurnace_legitSideAdditive) {
+					return master()!=null;
+				} else if (IEConfig.Machines.arcfurnace_legitSideAdditive && !facing.equals(EnumFacing.UP) && !facing.equals(EnumFacing.DOWN)) {
+					return master()!=null;
+				}
+			} else if(pos==112 && IEConfig.Machines.arcfurnace_electrodeAutoInserting) {
+				if (!IEConfig.Machines.arcfurnace_legitSideElectrode) {
+					return master()!=null;
+				} else if (IEConfig.Machines.arcfurnace_legitSideElectrode && facing.equals(EnumFacing.UP)) {
+					return master()!=null;
+				}
+			}
+		}
 		return super.hasCapability(capability, facing);
 	}
 
@@ -635,14 +671,37 @@ public class TileEntityArcFurnace extends TileEntityMultiblockMetal<TileEntityAr
 			TileEntityArcFurnace master = master();
 			if(master==null)
 				return null;
-			if(pos==2)
-				return (T)master.outputHandler;
-			else if(pos==22)
-				return (T)master.slagHandler;
-			else if(pos==(mirrored?88: 86))
-				return (T)master.inputHandler;
-			else if(pos==(mirrored?86: 88))
-				return (T)master.additiveHandler;
+			if(pos==2) {
+				if (!IEConfig.Machines.arcfurnace_legitSideOutput) {
+					return (T)master.outputHandler;
+				} else if (IEConfig.Machines.arcfurnace_legitSideOutput && facing.equals(EnumFacing.UP)) {
+					return (T)master.outputHandler;
+				}
+			} else if(pos==22) {
+				if (!IEConfig.Machines.arcfurnace_legitSideSlag) {
+					return (T)master.slagHandler;
+				} else if (IEConfig.Machines.arcfurnace_legitSideSlag && !facing.equals(EnumFacing.UP) && !facing.equals(EnumFacing.DOWN)) {
+					return (T)master.slagHandler;
+				}
+			} else if(pos==(mirrored?88: 86)) {
+				if (!IEConfig.Machines.arcfurnace_legitSideInput) {
+					return (T)master.inputHandler;
+				} else if (IEConfig.Machines.arcfurnace_legitSideInput && facing.equals(EnumFacing.UP)) {
+					return (T)master.inputHandler;
+				}
+			} else if(pos==(mirrored?86: 88)) {
+				if (!IEConfig.Machines.arcfurnace_legitSideAdditive) {
+					return (T)master.additiveHandler;
+				} else if (IEConfig.Machines.arcfurnace_legitSideAdditive && !facing.equals(EnumFacing.UP) && !facing.equals(EnumFacing.DOWN)) {
+					return (T)master.additiveHandler;
+				}
+			} else if(pos==112 && IEConfig.Machines.arcfurnace_electrodeAutoInserting) {
+				if (!IEConfig.Machines.arcfurnace_legitSideElectrode) {
+					return (T)master.electrodeHandler;
+				} else if (IEConfig.Machines.arcfurnace_legitSideElectrode && facing.equals(EnumFacing.UP)) {
+					return (T)master.electrodeHandler;
+				}
+			}
 		}
 		return super.getCapability(capability, facing);
 	}

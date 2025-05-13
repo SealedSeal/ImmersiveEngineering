@@ -81,11 +81,11 @@ public class ItemCoresample extends ItemIEBase
 			list.add(s2);
 			if(IEConfig.coreSampleCoords)
 				list.add(I18n.format(Lib.CHAT_INFO+"coresample.pos", s0, s1, ""));
-
+			
 			if(ItemNBTHelper.hasKey(stack, "infinite"))
 				list.add(I18n.format(Lib.CHAT_INFO+"coresample.infinite"));
-			else if(ItemNBTHelper.hasKey(stack, "depletion"))
-				list.add(I18n.format(Lib.CHAT_INFO+"coresample.yield", ExcavatorHandler.mineralVeinCapacity-ItemNBTHelper.getInt(stack, "depletion")));
+			else if(ItemNBTHelper.hasKey(stack, "depletion") && ItemNBTHelper.hasKey(stack, "veinCapacity"))
+				list.add(I18n.format(Lib.CHAT_INFO+"coresample.yield", ItemNBTHelper.getInt(stack, "veinCapacity")-ItemNBTHelper.getInt(stack, "depletion")));
 
 			boolean hasStamp = ItemNBTHelper.hasKey(stack, "timestamp");
 			if(hasStamp&&world!=null)

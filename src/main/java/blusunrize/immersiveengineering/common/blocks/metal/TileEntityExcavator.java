@@ -78,7 +78,7 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 			MineralWorldInfo info = ExcavatorHandler.getMineralWorldInfo(world, wheelPos.getX() >> 4, wheelPos.getZ() >> 4);
 			if(info==null)
 				return 0;
-			float remain = (ExcavatorHandler.mineralVeinCapacity-info.depletion)/(float)ExcavatorHandler.mineralVeinCapacity;
+			float remain = (info.veinCapacity-info.depletion)/(float)info.veinCapacity;
 			return MathHelper.floor(Math.max(remain, 0)*15);
 		}
 		return 0;

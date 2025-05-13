@@ -290,12 +290,19 @@ public class Config
 			@Comment({"A modifier to apply to the time of every MetalPress recipe"})
 			@RangeDouble(min = 1e-3, max = 1e3)
 			public static float metalPress_timeModifier = 1;
+
 			@Comment({"A modifier to apply to the energy costs of every Crusher recipe"})
 			@RangeDouble(min = 1e-3, max = 1e3)
 			public static float crusher_energyModifier = 1;
 			@Comment({"A modifier to apply to the time of every Crusher recipe"})
 			@RangeDouble(min = 1e-3, max = 1e3)
 			public static float crusher_timeModifier = 1;
+
+			@Comment({"Set this to true to allow auto inserion only from a top"})
+			@RequiresMcRestart
+			public static boolean crusher_legitSideInput = false;
+
+
 			@Comment({"A modifier to apply to the energy costs of every Squeezer recipe"})
 			@RangeDouble(min = 1e-3, max = 1e3)
 			public static float squeezer_energyModifier = 1;
@@ -327,6 +334,27 @@ public class Config
 			@Mapped(mapClass = Config.class, mapName = "manual_bool")
 			@RequiresMcRestart
 			public static boolean arcfurnace_electrodeCrafting = false;
+
+			@Comment({"Set this to true to make hoppers and similar blocks insert electodes into furnace through the top block"})
+			@RequiresMcRestart
+			public static boolean arcfurnace_electrodeAutoInserting = false;
+
+			@Comment({"Set this to true to allow auto insertion of ores only from a side with a hole (top)"})
+			@RequiresMcRestart
+			public static boolean arcfurnace_legitSideInput = false;
+			@Comment({"Set this to true to allow auto insertion of additives only from a side with a hole (top)"})
+			@RequiresMcRestart
+			public static boolean arcfurnace_legitSideAdditive = false;
+			@Comment({"Set this to true to allow auto insertion of electrodes only from a side with a hole (top)"})
+			@RequiresMcRestart
+			public static boolean arcfurnace_legitSideElectrode = false;
+			@Comment({"Set this to true to allow auto removal of products only from a side with a hole (side)"})
+			@RequiresMcRestart
+			public static boolean arcfurnace_legitSideOutput = false;
+			@Comment({"Set this to true to allow auto removal of slag only from a side with a hole (side)"})
+			@RequiresMcRestart
+			public static boolean arcfurnace_legitSideSlag = false;
+
 			@Comment({"Set this to false to disable the Arc Furnace's recycling of armors and tools"})
 			@RequiresMcRestart
 			public static boolean arcfurnace_recycle = true;
@@ -370,11 +398,6 @@ public class Config
 			@Comment({"The chance that the Excavator will not dig up an ore with the currently downward-facing bucket."})
 			@RangeDouble(min = 0)
 			public static double excavator_fail_chance = .05d;
-			@Comment({"The maximum amount of yield one can get out of a chunk with the excavator. Set a number smaller than zero to make it infinite"})
-			public static int excavator_depletion = 38400;
-			@Comment({"List of dimensions that can't contain minerals. Default: The End."})
-			public static int[] excavator_dimBlacklist = new int[]{1};
-
 		}
 
 		public static class Ores
@@ -532,7 +555,6 @@ public class Config
 		BelljarHandler.solidFertilizerModifier = IEConfig.Machines.belljar_solid_fertilizer_mod;
 		BelljarHandler.fluidFertilizerModifier = IEConfig.Machines.belljar_fluid_fertilizer_mod;
 
-		Config.manual_int.put("excavator_depletion_days", Machines.excavator_depletion*45/24000);
 		Config.manual_bool.put("literalRailGun", false);//preventive measure for Railcraft
 		validateAndMapValues(IEConfig.class);
 		WireType.wireLossRatio = IEConfig.wireLossRatio;

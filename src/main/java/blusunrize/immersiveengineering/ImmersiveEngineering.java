@@ -13,6 +13,7 @@ import blusunrize.immersiveengineering.api.energy.wires.ImmersiveNetHandler;
 import blusunrize.immersiveengineering.api.shader.ShaderRegistry;
 import blusunrize.immersiveengineering.api.tool.ExcavatorHandler;
 import blusunrize.immersiveengineering.common.*;
+import blusunrize.immersiveengineering.common.MineralsConfig;
 import blusunrize.immersiveengineering.common.Config.IEConfig;
 import blusunrize.immersiveengineering.common.items.ItemRevolver;
 import blusunrize.immersiveengineering.common.util.IEIMCHandler;
@@ -72,6 +73,8 @@ public class ImmersiveEngineering
 	{
 		IELogger.logger = event.getModLog();
 		Config.preInit(event);
+
+		MineralsConfig.preInit(event);
 
 		IEContent.preInit();
 		proxy.preInit();

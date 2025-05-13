@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -69,7 +70,14 @@ public class IEApi
 	public static List<Predicate<ItemStack>> forbiddenInCrates = new ArrayList<>();
 
 	public static ItemStack getPreferredOreStack(String oreName)
-	{
+	{	
+		//ForgeRegistries.ITEMS.getValue(new ResourceLocation("minecraft:polished_diorite"))
+		if (oreName.contains(":")&&oreName.contains("/")) {
+			return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(oreName.substring(0,oreName.indexOf("/")))),1,Integer.parseInt(oreName.substring(oreName.indexOf("/")+1)));
+		} else if (oreName.contains(":")&&!oreName.contains("/")) {
+			return new ItemStack(ForgeRegistries.ITEMS.getValue(new ResourceLocation(oreName)),1);
+		}
+
 		if(!oreOutputPreference.containsKey(oreName))
 		{
 			ItemStack preferredStack = ApiUtils.isExistingOreName(oreName)?

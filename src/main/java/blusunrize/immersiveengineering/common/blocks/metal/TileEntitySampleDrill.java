@@ -120,7 +120,7 @@ public class TileEntitySampleDrill extends TileEntityIEBase implements ITickable
 	{
 		if(sample.isEmpty())
 			return -1;
-		return ExcavatorHandler.mineralVeinCapacity-sample.getTagCompound().getInteger("depletion");
+		return sample.getTagCompound().getInteger("veinCapacity")-sample.getTagCompound().getInteger("depletion");
 	}
 
 	@Nonnull
@@ -137,10 +137,11 @@ public class TileEntitySampleDrill extends TileEntityIEBase implements ITickable
 			ItemNBTHelper.setString(stack, "mineral", info.mineral.name);
 		else
 			return stack;
-		if(ExcavatorHandler.mineralVeinCapacity < 0||info.depletion < 0)
+		if(info.veinCapacity < 0||info.depletion < 0)
 			ItemNBTHelper.setBoolean(stack, "infinite", true);
 		else
 			ItemNBTHelper.setInt(stack, "depletion", info.depletion);
+			ItemNBTHelper.setInt(stack, "veinCapacity", info.veinCapacity);
 		return stack;
 	}
 
@@ -337,14 +338,15 @@ public class TileEntitySampleDrill extends TileEntityIEBase implements ITickable
 		return localizedName;
 	}
 
+	//Gets amount of resources left in a vein
 	public float getVeinIntegrity()
 	{
 		if(sample.isEmpty())
 			return 0;
 		else if(ItemNBTHelper.hasKey(sample, "infinite"))
 			return -1;
-		else if(ItemNBTHelper.hasKey(sample, "depletion"))
-			return 1-ItemNBTHelper.getInt(sample, "depletion")/(float)ExcavatorHandler.mineralVeinCapacity;
+		else if(ItemNBTHelper.hasKey(sample, "depletion") && ItemNBTHelper.hasKey(sample, "veinCapacity"))
+			return 1-ItemNBTHelper.getInt(sample, "depletion")/(float)ItemNBTHelper.getInt(sample, "veinCapacity");
 		return 0;
 	}
 }

@@ -27,6 +27,7 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -78,17 +79,35 @@ public class ModelCoresample implements IBakedModel
 				HashMap<TextureAtlasSprite, Integer> textureOre = new HashMap();
 				if(mineral!=null&&mineral.oreOutput!=null)
 				{
-					for(int i = 0; i < mineral.oreOutput.size(); i++)
+					//4CD_TODO
+					//Kostylno, zato rabotaet
+					int temp = 0;
+					for(int i = 0; i < mineral.oreOutput.size(); i++) {
 						if(!mineral.oreOutput.get(i).isEmpty())
 						{
 							int weight = Math.max(2, Math.round(16*mineral.recalculatedChances[i]));
-							Block b = Block.getBlockFromItem(mineral.oreOutput.get(i).getItem());
-							IBlockState state = b!=null&&b!=Blocks.AIR?b.getStateFromMeta(mineral.oreOutput.get(i).getMetadata()): Blocks.STONE.getDefaultState();
-							IBakedModel model = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state);
+							Block b = null;/*Block.getBlockFromItem(mineral.oreOutput.get(i).getItem())*/
+							IBlockState state = null;
+							IBakedModel model = null;
+							if(!(mineral.oreOutput.get(i).getItem() instanceof ItemBlock)) {
+								temp += weight;
+								continue;
+							}
+							try {
+							b = ((ItemBlock)mineral.oreOutput.get(i).getItem()).getBlock();
+							state = b!=null&&b!=Blocks.AIR?b.getStateFromMeta(mineral.oreOutput.get(i).getMetadata()): Blocks.STONE.getDefaultState();
+							} catch (Exception e) {
+							state = Blocks.STONE.getDefaultState();
+							//continue;
+							}
+							model = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(state);
 							if(model!=null&&model.getParticleTexture()!=null)
 								textureOre.put(model.getParticleTexture(), weight);
 							pixelLength += weight;
 						}
+					}
+					textureOre.put(Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.COBBLESTONE.getDefaultState()).getParticleTexture(), temp);
+					pixelLength += temp;
 				}
 				else
 					pixelLength = 16;
