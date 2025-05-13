@@ -46,10 +46,10 @@ Changes:
 
   * name - Name of a mineral (String)
   * genType - Type of a mineral (String)
-     * Three types available:
-    + "infinite" - Unlimited yield
-    + "fixed" - Fixed yield based on maxCapacity
-    + "range" - Random yield between minCapacity and maxCapacity
+    * Three types available:
+      + "infinite" - Unlimited yield
+      + "fixed" - Fixed yield based on maxCapacity
+      + "range" - Random yield between minCapacity and maxCapacity
   * minCapacity -
   * maxCapacity -
   * mineralWeight -
