@@ -10,6 +10,32 @@ Wires, transformers, capacitors!
 
 Changes:
 
+  Excavator:
+    Mineral Vein:
+      + Reworked code structure of minerals
+      + Minerals are now not hardcoded and moved to json file inside confing folder IEMinerals
+      + Added handler for json confings of minerals
+      + Added support for non ore dictionary names (minecraft:iron_ore)
+      + Added support for names with metadata (minecraft:stone/1)
+      - Removed vein size from general config
+      - Removed blacklisted dimensions from general config
+    
+  Sample Drill:
+    Core Sample:
+      + Reworked code that manages rendering of a core sample texture
+        + When there is an item in a vein instead of a block, it will paint sample as a cobblestone instead of stone to distinguish empty sample from a sample that contains only items
+        + Fixed issue with no texture when trying to render more than one item
+    
+  Arc Furnace:
+    + Added config parameter arcfurnace_electrodeAutoInserting that allows electrode input to arc furnace from a top central block
+    + Added config parameter arcfurnace_legitSideInput that disables side input of ores to arc furnace, leaving only top side with a hole for input
+    + Added config parameter arcfurnace_legitSideAdditive that disables side input of additives to arc furnace, leaving only top side with a hole for input
+    + Added config parameter arcfurnace_legitSideElectrode that disables side input of electrodes to arc furnace, leaving only top side with holes for input
+    + Added config parameter arcfurnace_legitSideOutput that disables bottom and top sides output of products from arc furnace, leaving only side with a hole for output
+    + Added config parameter arcfurnace_legitSideSlag that disables bottom side output of slag from arc furnace, leaving only side with a hole for output
+    
+  Crusher:
+    + Added config parameter crusher_legitSideInput that disables side input to crusher, leaving only top side of central top blocks for input
+==============
 
-# Downloads
-[CurseForge](https://minecraft.curseforge.com/projects/immersive-engineering/files) 
+  Mineral Config Files
