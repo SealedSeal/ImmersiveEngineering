@@ -12,13 +12,13 @@ Changes:
 
   Excavator:
     Mineral Vein:
-      + Reworked code structure of minerals
-      + Minerals are now not hardcoded and moved to json file inside confing folder IEMinerals
-      + Added handler for json confings of minerals
-      + Added support for non ore dictionary names (minecraft:iron_ore)
-      + Added support for names with metadata (minecraft:stone/1)
-      - Removed vein size from general config
-      - Removed blacklisted dimensions from general config
+      + Reworked code structure of minerals<br/>
+      + Minerals are now not hardcoded and moved to json file inside confing folder IEMinerals<br/>
+      + Added handler for json confings of minerals<br/>
+      + Added support for non ore dictionary names (minecraft:iron_ore)<br/>
+      + Added support for names with metadata (minecraft:stone/1)<br/>
+      - Removed vein size from general config<br/>
+      - Removed blacklisted dimensions from general config<br/>
     
   Sample Drill:
     Core Sample:
