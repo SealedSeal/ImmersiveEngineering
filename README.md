@@ -44,4 +44,18 @@ Changes:
 
   https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/62e9c3211f7d9af0b21d82a6a6071576bdd8c493/mineralsExample/default.json#L2C3-L24C4
 
+  * name - Name of a mineral (String)
+  * genType - Type of a mineral (String)
+     * Three types available:
+        + "infinite" - Unlimited yield
+        + "fixed" - Fixed yield based on maxCapacity
+        + "range" - Random yield between minCapacity and maxCapacity
+  * minCapacity -
+  * maxCapacity -
+  * mineralWeight -
+  * failChance -
+  * ores -
+  * chances - 
+  * blacklistedDimensions - 
+
   
