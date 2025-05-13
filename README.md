@@ -58,7 +58,7 @@ Changes:
     * Can be blocks or items
     * Supports ore dictionary names, id names, and id names with metadata, examples:
       * "ironOre"
-      * "mineraft:iron_ore"
+      * "minecraft:iron_ore"
       * "minecraft:stone/1"
   * chances - % of each resource from the ores list in a mineral, sums to 1 (float[])
   * blacklistedDimensions - List of dimensions where the mineral cannot be generated (int[])
