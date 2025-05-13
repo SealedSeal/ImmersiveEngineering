@@ -1,0 +1,138 @@
+[
+  {
+    "name": "Glowite",
+    "genType": "range",
+    "minCapacity": 160,
+    "maxCapacity": 1600,
+    "mineralWeight": 15,
+    "failChance": 0.1,
+    "ores": [
+      "glowstone",
+	  "dustGlowstone"
+    ],
+    "chances": [
+      0.1,
+	  0.9
+    ],
+    "blacklistedDimensions": [
+      0,
+	  1
+    ]
+  },
+  {
+    "name": "Flesh",
+    "genType": "range",
+    "minCapacity": 320,
+    "maxCapacity": 32000,
+    "mineralWeight": 20,
+    "failChance": 0.1,
+    "ores": [
+	  "netherrack",
+      "minecraft:rotten_flesh",
+	  "bone",
+	  "leather"
+    ],
+    "chances": [
+	  0.2,
+      0.6,
+	  0.1,
+	  0.1
+    ],
+    "blacklistedDimensions": [
+      0,
+	  1
+    ]
+  },
+  {
+    "name": "Bone",
+    "genType": "range",
+    "minCapacity": 320,
+    "maxCapacity": 32000,
+    "mineralWeight": 20,
+    "failChance": 0.1,
+    "ores": [
+	  "minecraft:soul_sand",
+      "minecraft:bone_block",
+	  "bone",
+	  "minecraft:dye/15"
+    ],
+    "chances": [
+      0.1,
+	  0.4,
+	  0.25,
+	  0.25
+    ],
+    "blacklistedDimensions": [
+      0,
+	  1
+    ]
+  },
+  {
+    "name": "Magmatite",
+    "genType": "range",
+    "minCapacity": 320,
+    "maxCapacity": 32000,
+    "mineralWeight": 15,
+    "failChance": 0.1,
+    "ores": [
+	  "minecraft:magma",
+      "netherrack",
+	  "minecraft:magma_cream",
+	  "minecraft:blaze_powder"
+    ],
+    "chances": [
+      0.5,
+	  0.25,
+	  0.125,
+	  0.125
+    ],
+    "blacklistedDimensions": [
+      0,
+	  1
+    ]
+  },
+  {
+    "name": "Nether Quarzite",
+    "genType": "range",
+    "minCapacity": 160,
+    "maxCapacity": 16000,
+    "mineralWeight": 10,
+    "failChance": 0.1,
+    "ores": [
+      "oreQuartz"
+    ],
+    "chances": [
+      1
+    ],
+    "blacklistedDimensions": [
+      0,
+	  1
+    ]
+  },
+  {
+    "name": "Fortress Ruins",
+    "genType": "range",
+    "minCapacity": 320,
+    "maxCapacity": 8000,
+    "mineralWeight": 10,
+    "failChance": 0.1,
+    "ores": [
+      "minecraft:nether_brick",
+	  "minecraft:nether_brick_stairs",
+	  "minecraft:stone_slab/6",
+	  "minecraft:nether_brick_fence",
+	  "minecraft:netherbrick"
+    ],
+    "chances": [
+      0.35,
+	  0.05,
+	  0.05,
+	  0.05,
+	  0.5
+    ],
+    "blacklistedDimensions": [
+      0,
+	  1
+    ]
+  }
+]
