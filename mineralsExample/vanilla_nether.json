@@ -14,9 +14,9 @@
 		0.1,
 		0.9
     ],
-    "blacklistedDimensions": [
-		0,
-		1
+	"blacklist": false,
+    "dimensions": [
+		-1
     ]
   },
   {
@@ -38,9 +38,9 @@
 		0.1,
 		0.1
     ],
-    "blacklistedDimensions": [
-		0,
-		1
+	"blacklist": false,
+    "dimensions": [
+		-1
     ]
   },
   {
@@ -62,9 +62,9 @@
 		0.25,
 		0.25
     ],
-    "blacklistedDimensions": [
-		0,
-		1
+	"blacklist": false,
+    "dimensions": [
+		-1
     ]
   },
   {
@@ -86,9 +86,9 @@
 		0.125,
 		0.125
     ],
-    "blacklistedDimensions": [
-		0,
-		1
+	"blacklist": false,
+    "dimensions": [
+		-1
     ]
   },
   {
@@ -104,9 +104,9 @@
     "chances": [
 		1
     ],
-    "blacklistedDimensions": [
-		0,
-		1
+	"blacklist": false,
+    "dimensions": [
+		-1
     ]
   },
   {
@@ -130,9 +130,9 @@
 		0.05,
 		0.5
     ],
-    "blacklistedDimensions": [
-		0,
-		1
+	"blacklist": false,
+    "dimensions": [
+		-1
     ]
   }
 ]

@@ -106,8 +106,10 @@ public class ModelCoresample implements IBakedModel
 							pixelLength += weight;
 						}
 					}
-					textureOre.put(Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.COBBLESTONE.getDefaultState()).getParticleTexture(), temp);
-					pixelLength += temp;
+					if (temp != 0) {
+						textureOre.put(Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getModelForState(Blocks.COBBLESTONE.getDefaultState()).getParticleTexture(), temp);
+						pixelLength += temp;
+					}
 				}
 				else
 					pixelLength = 16;

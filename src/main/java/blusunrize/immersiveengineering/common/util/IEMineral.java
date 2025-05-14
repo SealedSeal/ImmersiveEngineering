@@ -10,9 +10,10 @@ public class IEMineral
 			public float failChance;
 			public String[] ores;
 			public float[] chances;
-			public int[] blacklistedDimensions;
+			public boolean blacklist;
+			public int[] dimensions;
 
-			public IEMineral (String name, String genType, int minCapacity, int maxCapacity, int mineralWeight, float failChance, String[] ores, float[] chances, int[] blacklistedDimensions) 
+			public IEMineral (String name, String genType, int minCapacity, int maxCapacity, int mineralWeight, float failChance, String[] ores, float[] chances, boolean blacklist, int[] dimensions) 
 			{
 				this.genType = genType;
 				this.minCapacity = minCapacity;
@@ -22,6 +23,7 @@ public class IEMineral
 				this.failChance = failChance;
 				this.ores = ores;
 				this.chances = chances;
-				this.blacklistedDimensions = blacklistedDimensions;
+				this.blacklist = blacklist;
+				this.dimensions = dimensions;
 			}
 		}

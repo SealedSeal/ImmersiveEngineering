@@ -406,7 +406,7 @@ public class IEContent
 		
 		//Loop that iterates through each mineral added from json config files
 		for (IEMineral mineral : MineralsConfig.MineralList) {
-			ExcavatorHandler.addMineral(mineral.name, mineral.genType, mineral.minCapacity, mineral.maxCapacity, mineral.mineralWeight, mineral.failChance, mineral.ores, mineral.chances, mineral.blacklistedDimensions);
+			ExcavatorHandler.addMineral(mineral.name, mineral.genType, mineral.minCapacity, mineral.maxCapacity, mineral.mineralWeight, mineral.failChance, mineral.ores, mineral.chances, mineral.blacklist, mineral.dimensions);
 		}
 
 		/*MULTIBLOCK RECIPES*/

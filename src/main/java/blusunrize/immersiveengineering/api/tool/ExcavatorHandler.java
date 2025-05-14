@@ -42,10 +42,10 @@ public class ExcavatorHandler
 	public static double mineralChance = 0;
 	public static boolean allowPackets = false;
 
-	public static MineralMix addMineral(String name, String genType, int minCapacity, int maxCapacity, int mineralWeight, float failChance, String[] ores, float[] chances, int[] blacklistedDimensions)
+	public static MineralMix addMineral(String name, String genType, int minCapacity, int maxCapacity, int mineralWeight, float failChance, String[] ores, float[] chances, boolean blacklist, int[] dimensions)
 	{
 		assert ores.length==chances.length;
-		MineralMix mix = new MineralMix(name, genType, minCapacity, maxCapacity, failChance, ores, chances, blacklistedDimensions);
+		MineralMix mix = new MineralMix(name, genType, minCapacity, maxCapacity, failChance, ores, chances, blacklist, dimensions);
 		mineralList.put(mix, mineralWeight);
 		return mix;
 	}
@@ -160,7 +160,7 @@ public class ExcavatorHandler
 		public int[] dimensionWhitelist = new int[0];
 		public int[] dimensionBlacklist = new int[0];
 
-		public MineralMix(String name, String genType, int minCapacity, int maxCapacity, float failChance, String[] ores, float[] chances, int[] blacklistedDimensions)
+		public MineralMix(String name, String genType, int minCapacity, int maxCapacity, float failChance, String[] ores, float[] chances, boolean blacklist, int[] dimensions)
 		{
 			this.name = name;
 			this.genType = genType;
@@ -170,8 +170,12 @@ public class ExcavatorHandler
 			this.ores = ores;
 			this.chances = chances;
 
-			//Assigns list of blacklisted dimensions
-			this.dimensionBlacklist = blacklistedDimensions.clone();
+			//Assigns list of dimensions
+			if (blacklist) {
+				this.dimensionBlacklist = dimensions.clone();
+			} else if (!blacklist) {
+				this.dimensionWhitelist = dimensions.clone();
+			}
 		}
 
 		public MineralMix addReplacement(String original, String replacement)
@@ -311,12 +315,12 @@ public class ExcavatorHandler
 				recalculatedChances[i] = tagList.getFloatAt(i);
 
 			boolean isValid = tag.getBoolean("isValid");
-			MineralMix mix = new MineralMix(name, genType, minCapacity, maxCapacity, failChance, ores, chances, tag.getIntArray("dimensionBlacklist"));
+			MineralMix mix = new MineralMix(name, genType, minCapacity, maxCapacity, failChance, ores, chances, true, new int[0]);
 			mix.oreOutput = oreOutput;
 			mix.recalculatedChances = recalculatedChances;
 			mix.isValid = isValid;
 			mix.dimensionWhitelist = tag.getIntArray("dimensionWhitelist");
-			//mix.dimensionBlacklist = tag.getIntArray("dimensionBlacklist");
+			mix.dimensionBlacklist = tag.getIntArray("dimensionBlacklist");
 			return mix;
 		}
 	}
