@@ -42,7 +42,7 @@ Changes:
 
   Each json file inside IEMinerals folder contains list of minerals with the following structure:
 
-  https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/master/bf4d9b68614af2f3c6b7f9ac92d97fe9f69629b3/mineralsExample/default.json#L2C3-L25C4
+  https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/bf4d9b68614af2f3c6b7f9ac92d97fe9f69629b3/mineralsExample/default.json#L2C3-L25C4
 
   * name - Name of a mineral (String)
   * genType - Type of a mineral (String)
@@ -61,7 +61,8 @@ Changes:
       * "minecraft:iron_ore"
       * "minecraft:stone/1"
   * chances - % of each resource from the ores list in a mineral, sums to 1 (float[])
-  * blacklistedDimensions - List of dimensions where the mineral cannot be generated (int[])
+  * blacklist - will not generate minerals in dimensions from list "dimensions" if set to true (boolean)
+  * dimensions - List of dimensions where the mineral can or cannot be generated based on "blacklist" parameter (int[])
 
 More examples of minerals with type "range"
 https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/master/mineralsExample/vanilla_nether.json
