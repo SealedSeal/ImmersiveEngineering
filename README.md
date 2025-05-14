@@ -42,7 +42,7 @@ Changes:
 
   Each json file inside IEMinerals folder contains list of minerals with the following structure:
 
-  https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/bf4d9b68614af2f3c6b7f9ac92d97fe9f69629b3/mineralsExample/default.json#L2C3-L25C4
+  https://github.com/SealedSeal/ImmersiveEngineeringExcavated/blob/master/bf4d9b68614af2f3c6b7f9ac92d97fe9f69629b3/mineralsExample/default.json#L2C3-L25C4
 
   * name - Name of a mineral (String)
   * genType - Type of a mineral (String)
